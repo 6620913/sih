@@ -1,5 +1,5 @@
 from tkinter import * 
-
+# this file required pre installed tkinter
 
 
 app = Tk()
@@ -18,7 +18,7 @@ y_list=[]
 ix =0
 iy=0
 
-
+# functions to draw lines on the canvas
 def get_x_and_y(event):
     global prev_x,prev_y,ix,iy
     prev_x ,prev_y = event.x,event.y
@@ -43,8 +43,7 @@ def draw_line(event):
         iy=iy+1
         
 
-        # y_list.append(prev_y)
-        # print(y_list)
+        
 
 
 # save button feature
@@ -68,15 +67,13 @@ save_button.pack(
     expand=True
 )
 
+
+# the text box in which we can write the content after this pressing save will store the content in a file
 I_Text = Text(app,width= 400,height=200,)
 I_Text.pack(pady=20)
 
 
 
-
-# button_frame = Frame(app)
-# button_frame.pack()
-# tsave_button = Button(button_frame,text="Save",command=save )
 
 
 canvas.bind("<Button-1>",get_x_and_y)

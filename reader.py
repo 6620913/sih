@@ -1,6 +1,6 @@
 from tkinter import *
 
-import time
+# this file require pre installed tkinter 
 
 
 
@@ -14,7 +14,7 @@ canvas.pack(anchor='nw',fill='both',expand=1)
 
 
 
-# file player
+# importent global variables
 x_list =[]
 y_list=[]
 prev_x = -1
@@ -34,32 +34,19 @@ def draw_line():
     ix=ix+1
     iy=iy+1
 
+# animate funtion will call the draw line funtion for drawing the diagram smoothly
 def animate():
     if(ix==len(x_list)):
         return
     draw_line()
     app.after(50,animate)
-    # if(ix!=len(x_list)):
-    #     animate()
+   
 
+
+# the play function will play the diagram or start drawing the diagram
 def play():
     global x_list,y_list
-    # f= open("test.ap","r")
-    # ls = str(f.read()).split("\n")
-    # ls[0]=ls[0].replace('[',"")
-    # ls[0]=ls[0].replace(']',"")
-    # ls[1]=ls[1].replace('[',"")
-    # ls[1]=ls[1].replace(']',"")
 
-    # x_list=ls[0].split(",")
-    # y_list=ls[1].split(",")
-    # print(ls[2])
-    # print(len(ls))
-    # V_Text.insert(END,ls[2])
-    # f.close()
-    
-   
-    
     get_x_and_y()
     
     animate()
@@ -86,6 +73,8 @@ play_button.pack(
     expand=True
 )
 
+
+# following line is responsible for the text box visibility
 V_Text = Text(app,width= 400,height=200,)
 V_Text.pack(pady=20)
 
@@ -103,6 +92,7 @@ y_list=ls[1].split(",")
 print(ls[2])
 print(len(ls))
 V_Text.insert(END,ls[2])
+V_Text.configure(state='disabled')
 f.close()
 
 
