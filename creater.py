@@ -3,11 +3,12 @@ from tkinter import *
 
 
 app = Tk()
-app.geometry("400x400")
+app.geometry("400x700")
 
 canvas = Canvas(app,bg='blue')
 
 canvas.pack(anchor='nw',fill='both',expand=1)
+
 
 # importent global variables
 prev_x =-1
@@ -48,8 +49,11 @@ def draw_line(event):
 
 # save button feature
 def save():
+    global I_Text
+    content = I_Text.get(1.0,END)
+
     f =open("test.ap","a")
-    f.write(str(x_list)+"\n"+str(y_list))
+    f.write(str(x_list)+"\n"+str(y_list)+"\n"+content)
     f.close()
     
 
@@ -64,11 +68,20 @@ save_button.pack(
     expand=True
 )
 
+I_Text = Text(app,width= 400,height=200,)
+I_Text.pack(pady=20)
 
+
+
+
+# button_frame = Frame(app)
+# button_frame.pack()
+# tsave_button = Button(button_frame,text="Save",command=save )
 
 
 canvas.bind("<Button-1>",get_x_and_y)
 canvas.bind("<B1-Motion>",draw_line)
+
 
 
 app.mainloop()

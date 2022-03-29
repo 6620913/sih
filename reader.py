@@ -5,11 +5,13 @@ import time
 
 
 app = Tk()
-app.geometry("400x400")
+app.geometry("400x700")
 
 canvas = Canvas(app,bg='blue')
 
 canvas.pack(anchor='nw',fill='both',expand=1)
+
+
 
 
 # file player
@@ -42,15 +44,19 @@ def animate():
 
 def play():
     global x_list,y_list
-    f= open("test.ap","r")
-    ls = str(f.read()).split("\n")
-    ls[0]=ls[0].replace('[',"")
-    ls[0]=ls[0].replace(']',"")
-    ls[1]=ls[1].replace('[',"")
-    ls[1]=ls[1].replace(']',"")
+    # f= open("test.ap","r")
+    # ls = str(f.read()).split("\n")
+    # ls[0]=ls[0].replace('[',"")
+    # ls[0]=ls[0].replace(']',"")
+    # ls[1]=ls[1].replace('[',"")
+    # ls[1]=ls[1].replace(']',"")
 
-    x_list=ls[0].split(",")
-    y_list=ls[1].split(",")
+    # x_list=ls[0].split(",")
+    # y_list=ls[1].split(",")
+    # print(ls[2])
+    # print(len(ls))
+    # V_Text.insert(END,ls[2])
+    # f.close()
     
    
     
@@ -79,6 +85,25 @@ play_button.pack(
     ipady=5,
     expand=True
 )
+
+V_Text = Text(app,width= 400,height=200,)
+V_Text.pack(pady=20)
+
+
+# following code will read data from the file 
+f= open("test.ap","r")
+ls = str(f.read()).split("\n")
+ls[0]=ls[0].replace('[',"")
+ls[0]=ls[0].replace(']',"")
+ls[1]=ls[1].replace('[',"")
+ls[1]=ls[1].replace(']',"")
+
+x_list=ls[0].split(",")
+y_list=ls[1].split(",")
+print(ls[2])
+print(len(ls))
+V_Text.insert(END,ls[2])
+f.close()
 
 
 
